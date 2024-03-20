@@ -1,4 +1,4 @@
-name: "NPM login"
+name: "open.INC NPM login"
 description: "Login to NPM by using ENV"
 runs:
   using: "node20"
