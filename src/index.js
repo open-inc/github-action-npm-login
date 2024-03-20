@@ -41,7 +41,7 @@ async function run() {
     }
 
     if (fs.existsSync(configPath)) {
-      const configContent = fs.readFileSync(configPath);
+      const configContent = fs.readFileSync(configPath, "utf-8");
       const configLines = configContent
         .split("\n")
         .filter((line) => !line.includes(configKey));

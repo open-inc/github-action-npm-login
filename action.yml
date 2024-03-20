@@ -1,5 +1,5 @@
 name: "NPM login"
 description: "Login to NPM by using ENV"
 runs:
-  using: "node12"
+  using: "node20"
   main: "dist/index.js"
