@@ -1,11 +1,33 @@
 {
+  "name": "github-action-npm-login",
+  "version": "1.0.0",
+  "description": "GitHub Action that writes an npm auth token into ~/.npmrc",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "author": {
+    "name": "open.INC GmbH",
+    "email": "info@openinc.de",
+    "url": "https://openinc.de"
+  },
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
-    "build": "ncc build src/index.js -o dist"
+    "typecheck": "tsc --noEmit",
+    "build": "ncc build src/index.ts -o dist --minify --license licenses.txt",
+    "check-dist": "npm run build && git diff --exit-code --stat -- dist"
   },
   "dependencies": {
-    "@actions/core": "^1.2.6"
+    "@actions/core": "^3.0.1"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.38.1"
+    "@types/node": "^24.13.3",
+    "@vercel/ncc": "^0.45.0",
+    "typescript": "^5.9.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/open-inc/github-action-npm-login.git"
   }
 }
