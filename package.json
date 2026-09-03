@@ -29,5 +29,35 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/open-inc/github-action-npm-login.git"
+  },
+  "release": {
+    "branches": [
+      "master"
+    ],
+    "repositoryUrl": "https://github.com/open-inc/github-action-npm-login.git",
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/github",
+      "semantic-release-export-data"
+    ],
+    "prepare": [
+      "@semantic-release/changelog",
+      {
+        "path": "@semantic-release/npm",
+        "npmPublish": false
+      },
+      {
+        "path": "@semantic-release/git",
+        "assets": [
+          "package.json",
+          "package-lock.json",
+          "CHANGELOG.md",
+          "dist"
+        ],
+        "message": "chore(release): Release ${nextRelease.version} \n\n${nextRelease.notes}"
+      }
+    ]
   }
 }
