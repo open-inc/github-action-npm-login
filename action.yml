@@ -1,5 +1,28 @@
 name: "open.INC NPM login"
-description: "Login to NPM by using ENV"
+description: "Write an npm auth token into ~/.npmrc so npm/yarn/pnpm can install and publish"
+author: "open.INC GmbH"
+
+branding:
+  icon: "lock"
+  color: "red"
+
+inputs:
+  token:
+    description: "npm auth token. Falls back to the NPM_TOKEN environment variable."
+    required: false
+  registry:
+    description: "Registry the token belongs to. Falls back to NPM_REGISTRY, then registry.npmjs.org."
+    required: false
+  npmrc-path:
+    description: "Path of the npmrc file to write. Falls back to NPM_CONFIG_USERCONFIG, then ~/.npmrc."
+    required: false
+
+outputs:
+  npmrc-path:
+    description: "Absolute path of the npmrc file that was written."
+  registry:
+    description: "Registry the auth token was written for."
+
 runs:
-  using: "node20"
+  using: "node24"
   main: "dist/index.js"
