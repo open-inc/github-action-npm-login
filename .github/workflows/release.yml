@@ -56,10 +56,10 @@ jobs:
       # semantic-release only creates the immutable vX.Y.Z tag. Consumers pin
       # the major (`@v2`), so that tag has to be force-moved onto the release.
       - name: Move major version tag
-        if: steps.semantic.outputs.new-release-published == 'true'
+        if: steps.semantic.outputs.new_release_published == 'true'
         env:
           GH_TOKEN: ${{ secrets.OPENINC_SEMANTIC_RELEASE }}
-          VERSION: ${{ steps.semantic.outputs.new-release-version }}
+          VERSION: ${{ steps.semantic.outputs.new_release_version }}
         run: |
           set -euo pipefail
 
@@ -79,6 +79,6 @@ jobs:
           echo "Moved $MAJOR to v$VERSION" >> "$GITHUB_STEP_SUMMARY"
 
     outputs:
-      new-release-published: ${{ steps.semantic.outputs.new-release-published }}
-      new-release-version: ${{ steps.semantic.outputs.new-release-version }}
-      new-release-git-tag: ${{ steps.semantic.outputs.new-release-git-tag }}
+      new-release-published: ${{ steps.semantic.outputs.new_release_published }}
+      new-release-version: ${{ steps.semantic.outputs.new_release_version }}
+      new-release-git-tag: ${{ steps.semantic.outputs.new_release_git_tag }}
